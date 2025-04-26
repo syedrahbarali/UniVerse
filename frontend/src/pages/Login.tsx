@@ -6,10 +6,22 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin =  (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Logging in with", email, password);
-    // API call or navigation logic here
+
+     fetch("http://localhost:3000/api/v1/login",{
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+      body: JSON.stringify({
+        email,
+        password,
+      }),
+     }).then(async res => await res.json()).then(res => {
+      console.log(res)
+    })
   };
 
   return (
@@ -78,3 +90,4 @@ const Login = () => {
 };
 
 export default Login;
+  

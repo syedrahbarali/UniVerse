@@ -28,9 +28,15 @@ export const login = async (req: Request, res: Response): Promise<any> => {
     });
 
     if (accessToken) {
+      res.cookie("accessToken", accessToken, {
+        httpOnly: true,
+        secure: true,
+        sameSite: "none",
+        maxAge: 24 * 60 * 60 * 1000,
+      });
+
       return res.status(200).json({
-        token: accessToken,
-        user: user[0],
+        message: "Login success",
       });
     }
   } catch (err) {
