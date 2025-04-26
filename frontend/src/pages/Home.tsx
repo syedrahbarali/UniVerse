@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { FaQrcode, FaBell, FaUserCheck, FaArrowRight } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { Button } from "../components/ui/button";
 
 const cardData = [
   {
